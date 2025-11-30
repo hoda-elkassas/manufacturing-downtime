@@ -1,6 +1,7 @@
 # manufacturing-downtime
 
-A Machine Learning project for predicting factory downtime and providing actionable insights for production, maintenance, and planning teams.
+A full **End-to-End Manufacturing Analytics & Downtime Prediction System** combining:
+**data engineering, data analysis, machine learning, system design, dashboards, and deployment.**
 
 ---
 
@@ -10,21 +11,30 @@ Unplanned downtime is one of the biggest operational challenges in manufacturing
 
 * Delayed orders
 * Inefficient labor allocation
-* Higher operational costs
+* Increased operational cost
 * Reduced overall equipment effectiveness (OEE)
 
-This project builds a **data-driven, predictive system** that estimates downtime per batch and identifies high-risk operators, machines, and conditions.
-It also includes a dashboard for monitoring KPIs and operational patterns.
+This project delivers a **complete analytical & operational system**, not just an ML model.
+It includes:
+
+* A fully cleaned and engineered dataset
+* Exploratory analysis revealing operational patterns
+* A predictive model to estimate downtime
+* A dashboard for real-time monitoring & insights
+* System documentation (ERD, DFD, Use Case, Architecture)
+* A deployment-ready dashboard interface
 
 ---
 
 ## 🎯 Project Objectives
 
 * Predict total downtime per batch
-* Provide factor-level contributions (why the downtime happened)
-* Forecast next-day downtime for planning teams
-* Identify risky operators/equipment to support maintenance
-* Provide an operational dashboard for data exploration and monitoring
+* Provide insights on **why** downtime happens
+* Detect high-risk operators & faulty machines
+* Support next-day planning with downtime forecasts
+* Deliver an interactive dashboard for production teams
+* Provide full **System Analysis & Design** documentation
+* Build a modular codebase for future scaling and deployment
 
 ---
 
@@ -32,14 +42,14 @@ It also includes a dashboard for monitoring KPIs and operational patterns.
 
 The dataset includes:
 
-* Batch information (BatchID, ProductionLine, ProductType)
-* Operator & shift details
+* Batch details (BatchID, ProductLine, ProductType)
+* Operator information & shift schedules
 * Machine parameters
-* Historical downtime records (in minutes)
-* Environmental factors
-* Maintenance logs
+* Historical downtime logs
+* Maintenance records
+* Environmental & operational conditions
 
-Files expected:
+Expected directory structure:
 
 ```
 data/
@@ -52,51 +62,54 @@ data/
 
 ## 🧹 Data Preprocessing
 
-Main cleaning steps:
+Steps completed:
 
-* Handle missing values
-* Merge raw tables into a unified dataset
-* Compute `TotalDowntime_minutes`
-* Remove outliers
-* Encode categorical features
-* Normalize numerical fields
+* Handling missing values
+* Merging multiple raw tables
+* Computing `TotalDowntime_minutes`
+* Removing outliers
+* Fixing inconsistencies
+* Encoding categorical variables
+* Scaling numerical features
+* Exporting processed datasets
 
-See notebook:
+Notebook:
 `Data_Preprocessing.ipynb`
 
 ---
 
 ## 🔍 Exploratory Data Analysis (EDA)
 
-Key insights:
+Main findings:
 
-* Operators show different performance patterns
-* Certain machines consistently cause high downtime
-* Night shifts have different behavior vs day shifts
+* Some operators consistently produce higher downtime
+* Specific machines cause repeated failure patterns
+* Night shifts show different behavior vs day shift
 * Strong correlation between downtime and setup time
+* Weekly seasonal patterns in downtime
 
-See notebook:
+Notebook:
 `EDA_and_Modeling.ipynb`
 
 ---
 
-## 🤖 Machine Learning Model
+## 🤖 Predictive Modeling
 
-We trained and evaluated multiple regression models:
+Trained & compared multiple regression models:
 
 * Linear Regression
 * Random Forest
 * XGBoost
 
-Best model (example):
-**XGBoost Regressor**
+Selected Model: **XGBoost Regressor**
+Includes:
 
-Performance Metrics (example):
+* Hyperparameter tuning
+* Error analysis
+* Feature importance
+* Model saving (.pkl files)
 
-* MAE = *X.xx*
-* R² = *0.xx*
-
-Saved model artifacts will be stored in:
+Artifacts stored in:
 
 ```
 models/
@@ -107,21 +120,62 @@ encoder.pkl
 
 ---
 
-## 🖥 Deployment (App / Dashboard)
+## 🛠 System Analysis & Design
 
-A lightweight dashboard + prediction interface.
+Delivered professional documentation:
 
-App notebook:
+### ✔ Use Case Diagram
+
+Actors: Operator – Planner – Maintenance – Dashboard System
+
+### ✔ ER Diagram
+
+Database tables for batches, operators, machines, downtime logs.
+
+### ✔ Data Flow Diagrams (DFD – Level 0, 1, 2)
+
+Shows data movement from input → processing → prediction → dashboard.
+
+### ✔ Sequence Diagram
+
+Batch prediction workflow.
+
+### ✔ Activity Diagram
+
+Operator + dashboard usage flow.
+
+### ✔ State Diagram
+
+Machine/downtime lifecycle.
+
+### ✔ Architecture Diagram
+
+System layers:
+UI → Backend → ML Service → Database → Dashboard Layer
+
+All diagrams stored in:
+`docs/`
+
+---
+
+## 🖥 Deployment (App & Dashboard)
+
+Prototype dashboard includes:
+
+* Batch-level prediction
+* Operator/machine risk ranking
+* Interactive KPIs
+* Visual analytics
+* Upload CSV for prediction
+
+Notebook:
 `app_py.ipynb`
 
-Planned deployment features:
+Planned upgrades:
 
-* Batch prediction
-* Daily forecast
-* Operator/machine risk ranking
-* Interactive KPIs and charts
-
-A Streamlit or FastAPI version may be added later.
+* Streamlit / FastAPI full deployment
+* CI/CD pipeline
+* Cloud hosting (Render / Railway)
 
 ---
 
@@ -159,12 +213,16 @@ project/
 
 ---
 
-## 🧪 Future Improvements
+## 🚀 Future Improvements
 
-* Add SHAP interpretability
-* Full FastAPI backend
-* Deploy dashboard to cloud (Render / Railway)
-* Add automated retraining pipeline
-* Add real-time operator alerts
+* SHAP explainability
+* Full backend with FastAPI
+* Cloud deployment
+* Real-time alerts
+* Automated retraining pipeline
+
+---
+
+**Good Luck :)**
 
 ---
